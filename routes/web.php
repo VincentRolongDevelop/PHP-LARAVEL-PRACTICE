@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Cursocontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,6 @@ EJEMPLOS
 Route::get('/', function () {
     return view('welcome');
 });
-*/
-Route::get('/', HomeController::class); 
 
 Route::get('cursos', function () {
     return "hello world";
@@ -38,15 +37,17 @@ Route::get('cursos/create', function(){
 Route::get('cursos/{curso}', function ($curso) {
     return "Bienvenido al curso:$curso";
 });
+*/
 
 //EJEMPLO PARA VARIOS PARAMETROS Y PARAMETROS OPCIONALES
 
 /*
 MÉTODO NORMAL
+
 Route::get('cursos/{curso}/{categoria}', function ($curso, $categoria) {
     return "Bienvenido al curso: $curso con categoria $categoria";
 });
-*/
+
 Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria=null) {
     if($categoria)
     return "Bienvenido al curso: $curso con categoria $categoria";
@@ -54,4 +55,17 @@ Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria=null) {
     return "Bienvenido al curso: $curso";
     }
 });
+
+ABAJO VEREMOS COMO SE USA EN WEB PERO CON UN CONTROLADOR
+*/
+
+Route::get('/', HomeController::class); 
+
+Route::get('cursos', [Cursocontroller::class,'index']);
+
+Route::get('cursos/create', [Cursocontroller::class,'create']);
+
+Route::get('cursos/{curso}', [Cursocontroller::class,'show']);
+
+
 
