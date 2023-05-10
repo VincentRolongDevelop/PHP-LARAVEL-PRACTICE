@@ -1,6 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,11 @@ si necesitamos que tenga una variable la ruta se la agregamos con un {} y
 tambien se lo ponemos a la función anonima
 
 EJEMPLOS
-*/
 Route::get('/', function () {
     return view('welcome');
 });
+*/
+Route::get('/', HomeController::class); 
 
 Route::get('cursos', function () {
     return "hello world";
