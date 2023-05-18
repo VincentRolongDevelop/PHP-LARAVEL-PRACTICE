@@ -10,6 +10,6 @@ class HomeController extends Controller
 {
     //invoke es cuando queremos que use una sola ruta
     public function __invoke(){
-        return 'Hola mundos';
+        return view("home");
     }
 }
